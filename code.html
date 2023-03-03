@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Jason Popejoy</title>
+    <title>Counteri: A Coding Project By Jason Popejoy</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="/img/JPMark.jpg" class="d-inline-block align-text-top"
-                    alt="Jason Popejoy Logo" width="40" height="38"> App Name</a>
+                    alt="Jason Popejoy Logo" width="40" height="38"> Counteri</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,10 +44,10 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/jaspopejoy/Counteri.git">Git Repo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About</a>
+                        <a class="nav-link" target="_blank" href="https://jasons-old-portfolio.netlify.app/">About</a>
                     </li>
                 </ul>
             </div>
@@ -57,13 +57,74 @@
     <!-- Main Section -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for Counteri.</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        // Call Hello World
-                        function helloworld{
-                            alert("hello world");
+
+                        //Get the values from the interface
+                        //start or controller function
+                        function getValues() {
+                            //get values from the page
+                            let startValue = document.getElementById("startValue").value;
+                            let endValue = document.getElementById("endValue").value;
+                        
+                            //WE NEED TO VALIDATE OUR INPUT
+                            //parse into Integers
+                            startValue = parseInt(startValue);
+                            endValue = parseInt(endValue);
+                        
+                            if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                //call generateNumbers
+                                let numbers = generateNumbers(startValue, endValue);
+                                //call displayNumbers
+                                displayNumbers(numbers);
+                        
+                            } else {
+                                alert("You must enter Integers!");
+                            }
+                        
+                        }
+                        
+                        //generate numbers from the startValue to the endValue
+                        //logic function(s)
+                        function generateNumbers(sValue, eValue) {
+                        
+                            let numbers = [];
+                        
+                            //we want to get all numbers from start to end
+                            for (let i = sValue; i <= eValue; i++) {
+                                //this will execute in a loop until index = eValue
+                                numbers.push(i);
+                            }
+                        
+                            return numbers;
+                        
+                        }
+                        
+                        //display the numbers and mark even numbers bold
+                        //display or view functions
+                        function displayNumbers(numbers) {
+                        
+                            let templateRows = "";
+                        
+                            for (let index = 0; index < numbers.length; index++) {
+                                let className = "even";
+                        
+                                let number = numbers[index];
+                        
+                                if (number % 2 == 0) {
+                                    className = "even";
+                                }
+                                else{
+                                    className = "odd";
+                                }
+                                
+                                templateRows += `&lt;tr>&lt;td class="${className}" >${number}&lt;/td>&lt;/tr>
+                            }
+                        
+                            document.getElementById("results").innerHTML = templateRows;
+                        
                         }
                     </code>
                     </pre>
@@ -89,11 +150,9 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <div class="col social"><a href="https://www.linkedin.com/in/jason-popejoy/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a>
-                        </div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                        <div class="col social"><a href="https://github.com/jaspopejoy" target="_blank"><i class="fab fa-github fa-2x"></i></a>
                         </div>
                     </div>
                 </div>
